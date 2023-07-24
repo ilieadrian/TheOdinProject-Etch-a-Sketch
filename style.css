@@ -1,0 +1,133 @@
+/* General styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden; 
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F9FBFC;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    padding: 0;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    min-height: 100vh; 
+    overflow-x: hidden; 
+}
+
+
+main {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Option buttons and form  */
+h1 {
+    margin: 2rem 0;
+    font-size: 2rem;
+}
+/* p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+} */
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+}
+
+form {
+    display: flex;
+    margin-bottom: 2rem;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: row; */
+    /* width: 100vh; */
+}
+
+label {
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+    display: inline-block;
+}
+input {
+    display: inline-block;
+}
+
+input#number {
+    border-radius: 3px;
+    width: 100%;
+    max-width: 350px;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(62, 76, 117);
+    
+}
+
+.form-container button{
+    margin-left: 0.5rem;
+    align-self: flex-end;
+}
+
+button {
+    font-size: 1rem;
+    font-weight: 400;
+    border: none;
+    background-color: rgba(62, 76, 117);
+    color: rgb(255, 255, 255);
+    padding: 0.75rem 1rem;
+    border-radius: 3px;
+}
+
+button:hover {
+    border: none;
+    cursor: pointer;
+    background-color: rgba(62, 76, 117, 0.8);
+}
+
+.option-buttons-container {
+    margin-bottom: 2rem;
+}
+
+/* Canvas styles */
+
+.canvas {
+    width: 40rem;
+    height: 40rem;
+    background-color:#FFF;
+    border: 1px solid #959C9C;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+
+/* Footer */
+.attribution {
+    text-align: center;
+    width: 100%;
+    padding-bottom: 0.3rem;
+    font-size: 0.7rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+}
+
+.attribution a {
+    margin-left: 0.3rem;
+}

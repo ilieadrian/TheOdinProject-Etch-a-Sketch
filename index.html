@@ -3,10 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="style.css">
     <title>Etch-A-Sketch</title>
 </head>
 <body>
+    <main>
+        <h1>Etch-A-Sketch</h1>
+        <!-- <p>Hover the mouse over the canvas to paint.</p> -->
+        
+        <div class="buttons-container">
+            <div class="form-container">
+                <form action="">
+                    <div class="test-secondary-container">
+                        <label for="number">Create new canvas (max 100 square’s)</label><br>
+                        <input type="text" id="number" name="number"><br>
+                    </div>
+                    
+                    <button>Create</button>
+                </form>
+            </div>
+            <div class="option-buttons-container">
+                <button>Color picker</button>
+                <button>Progressive opacity</button>
+                <button>Rainbow mode</button>
+                <button>Clear</button>
+            </div>
+            
+        </div>
+        <div class="canvas"></div>
+    </main>
+    <p class="attribution">Coded by<a href="http://ilieadrian.com">Ilie Adrian</a></p>
     <script src="script.js"></script>
 </body>
 </html>
+
+
+<!-- 
+
+    Rather than a simple color change from black to white, each interaction should randomize the square’s RGB value entirely.
+    Additionally, implement a progressive darkening effect where each interaction adds 10% more black or color to the square. The objective is to achieve a completely black square only after ten interactions.
+
+
+
+ -->
