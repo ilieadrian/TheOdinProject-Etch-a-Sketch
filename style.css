@@ -8,21 +8,20 @@
 }
 
 html {
-    height: 100%;
     overflow-y: scroll;
     overflow-x: hidden; 
 }
 body {
+    min-height: 100vh;
+    height: 100vh;
     font-family: 'Montserrat', sans-serif;
     background-color: #F9FBFC;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     padding: 0;
     margin: 0 auto;
     position: relative;
     text-align: center;
-    min-height: 100vh; 
     overflow-x: hidden; 
 }
 
@@ -54,8 +53,6 @@ form {
     margin-bottom: 2rem;
     justify-content: center;
     align-items: center;
-    /* flex-direction: row; */
-    /* width: 100vh; */
 }
 
 label {
@@ -76,7 +73,6 @@ input#number {
 }
 
 .form-container button{
-    /* margin-left: 0.5rem; */
     align-self: flex-end;
 }
 
@@ -88,7 +84,6 @@ button {
     color: rgb(255, 255, 255);
     padding: 0.75rem 1rem;
     border-radius: 3px;
-    
 }
 
 button:hover {
@@ -104,17 +99,23 @@ button:hover {
     gap: 0.5rem;
 }
 
-/* Canvas styles */
-
 .canvas {
-    width: 40rem;
-    height: 40rem;
-    background-color:#FFF;
+    box-sizing: border-box;
+    width: 640px;
+    height: 640px;
+    background-color: #FFF;
     border: 1px solid #959C9C;
     border-radius: 6px;
-    display: inline-block;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
+.cell {
+    display: inline-block;
+    border: 1px solid black;
+    flex-basis: calc(100% / var(--columns));
+}
 
 /* Footer */
 .attribution {
