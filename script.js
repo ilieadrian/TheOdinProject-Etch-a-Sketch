@@ -1,21 +1,25 @@
 let canvas = document.querySelector(".canvas");
-let squares = 16;
+let cells;
+let color = "rgba(62, 76, 117)";
 
+function drawCanvas(cells) {
+    let cellWidth = 100 / cells; 
+    let cellHeight = 100 / cells; 
 
-function drawCanvas() {
-    let cellWidth = 100 / squares; 
-    let cellHeight = 100 / squares; 
+    document.documentElement.style.setProperty("--columns", cells);
 
-    // Set the --columns CSS variable to the value of squares
-    document.documentElement.style.setProperty("--columns", squares);
-
-    for (let i = 0; i < squares * squares; i++) {
+    for (let i = 0; i < cells * cells; i++) {
         const newDiv = document.createElement("div");
         newDiv.classList.add("cell");
         newDiv.style.width = `${cellWidth}%`;   
         newDiv.style.height = `${cellHeight}%`;
+        newDiv.addEventListener('mouseover', setColour); //Addeing event listener for every cell too start setColour function
         canvas.appendChild(newDiv);
     }
 }
 
-drawCanvas()
+function setColour(event) {
+    event.target.style.background = color;
+}
+
+drawCanvas(16);
