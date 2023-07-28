@@ -1,4 +1,6 @@
 let canvas = document.querySelector(".canvas");
+let createBtn = document.getElementById("create");
+let userInput;
 let cells;
 let color = "rgba(62, 76, 117)";
 
@@ -13,7 +15,7 @@ function drawCanvas(cells) {
         newDiv.classList.add("cell");
         newDiv.style.width = `${cellWidth}%`;   
         newDiv.style.height = `${cellHeight}%`;
-        newDiv.addEventListener('mouseover', setColour); //Addeing event listener for every cell too start setColour function
+        newDiv.addEventListener('mouseover', setColour); //Adding event listener for every cell too start setColour function
         canvas.appendChild(newDiv);
     }
 }
@@ -21,5 +23,21 @@ function drawCanvas(cells) {
 function setColour(event) {
     event.target.style.background = color;
 }
+
+function takeUserInput() {
+    event.preventDefault();
+    userInput = document.getElementById("number").value;  
+
+    if (!userInput || userInput < 2 || userInput > 100 || isNaN(userInput) || userInput % 1 != 0)  {
+        alert("Please enter a positive, whole numerical value between 2 and 100.");
+        document.getElementById("number").value = "";
+    } else {
+        //Clears the previous canvas and draw a new one according to user input
+        canvas.innerHTML = ""; 
+        drawCanvas(userInput);
+    }
+}
+
+createBtn.addEventListener("click", takeUserInput);
 
 drawCanvas(16);
