@@ -1,5 +1,6 @@
 let canvas = document.querySelector(".canvas");
 let createBtn = document.getElementById("create");
+let clearBtn = document.getElementById("clear");
 let userInput;
 let cells;
 let color = "rgba(62, 76, 117)";
@@ -33,11 +34,19 @@ function takeUserInput() {
         document.getElementById("number").value = "";
     } else {
         //Clears the previous canvas and draw a new one according to user input
-        canvas.innerHTML = ""; 
-        drawCanvas(userInput);
+        resetCanvas()
     }
 }
 
+
+function resetCanvas() {
+    canvas.innerHTML = ""; 
+    drawCanvas(16);
+}
+
 createBtn.addEventListener("click", takeUserInput);
+
+
+clearBtn.addEventListener("click", resetCanvas);
 
 drawCanvas(16);
