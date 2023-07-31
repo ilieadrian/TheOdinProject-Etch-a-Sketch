@@ -1,9 +1,10 @@
 let canvas = document.querySelector(".canvas");
 let createBtn = document.getElementById("create");
 let clearBtn = document.getElementById("clear");
+let color = document.getElementById("picker").value;
 let userInput;
 let cells;
-let color = "rgba(62, 76, 117)";
+
 
 function drawCanvas(cells) {
     let cellWidth = 100 / cells; 

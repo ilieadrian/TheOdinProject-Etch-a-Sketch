@@ -76,7 +76,7 @@ input#number {
     align-self: flex-end;
 }
 
-button {
+.button {
     font-size: 1rem;
     font-weight: 400;
     border: none;
@@ -86,7 +86,7 @@ button {
     border-radius: 3px;
 }
 
-button:hover {
+.button:hover {
     border: none;
     cursor: pointer;
     background-color: rgba(62, 76, 117, 0.8);

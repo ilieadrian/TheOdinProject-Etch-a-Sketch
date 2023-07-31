@@ -21,14 +21,18 @@
                         <input type="text" id="number" name="number"><br>
                     </div>
                     
-                    <button id="create">Create</button>
+                    <button class="button" id="create">Create</button>
                 </form>
             </div>
             <div class="option-buttons-container">
-                <button>Color picker</button>
-                <button>Progressive opacity</button>
-                <button>Rainbow mode</button>
-                <button id="clear">Clear</button>
+                <div class="color-picker form">
+                    <label for="color-picker">Pick a color:</label>
+                    <input type="color" id="picker" name="color-picker" value="#3e4c75">
+                </div>
+                <!-- <button class="button">Color picker</button> -->
+                <button class="button">Progressive opacity</button>
+                <button class="button">Rainbow mode</button>
+                <button class="button" id="clear">Clear</button>
             </div>
             
         </div>
