@@ -1,7 +1,7 @@
 let canvas = document.querySelector(".canvas");
 let createBtn = document.getElementById("create");
 let clearBtn = document.getElementById("clear");
-let color = document.getElementById("picker").value;
+let color = document.getElementById("picker");
 let userInput;
 let cells;
 
@@ -22,8 +22,12 @@ function drawCanvas(cells) {
     }
 }
 
-function setColour(event) {
-    event.target.style.background = color;
+function setColour(event, pickedColour) {
+    event.target.style.background = color.value;
+
+    if(pickedColour) {
+        event.target.style.background = pickedColour;
+    }
 }
 
 function takeUserInput() {
@@ -39,14 +43,17 @@ function takeUserInput() {
     }
 }
 
-
 function resetCanvas() {
     canvas.innerHTML = ""; 
     drawCanvas(16);
 }
 
-createBtn.addEventListener("click", takeUserInput);
+function watchColorPicker(event) {
+    return pickedColour;
+}
 
+createBtn.addEventListener("click", takeUserInput);
+color.addEventListener("input", watchColorPicker, false);
 
 clearBtn.addEventListener("click", resetCanvas);
 

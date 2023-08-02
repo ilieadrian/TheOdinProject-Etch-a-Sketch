@@ -72,11 +72,12 @@ input#number {
     border: 1px solid rgba(62, 76, 117);
 }
 
-.form-container button{
+.form-container button {
     align-self: flex-end;
 }
 
 .button {
+    min-width: 190px;
     font-size: 1rem;
     font-weight: 400;
     border: none;
@@ -97,6 +98,30 @@ input#number {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+}
+
+.color-picker {
+    min-width: 190px;
+    display: flex;
+    flex-direction: row;
+    gap: 0.2rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(62, 76, 117);
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+}
+.color-picker > label {
+    font-size: 1rem;
+    width: 100%;
+    margin-bottom: 0;
+    display: inline-block;
+}
+
+#picker {
+    width: 50%;
+    /* height: 19px; */
+    margin-bottom: 0;
 }
 
 .canvas {
