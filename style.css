@@ -81,7 +81,7 @@ input#number {
     font-size: 1rem;
     font-weight: 400;
     border: none;
-    background-color: rgba(62, 76, 117);
+    background-color: rgb(62, 76, 117);
     color: rgb(255, 255, 255);
     padding: 0.75rem 1rem;
     border-radius: 3px;

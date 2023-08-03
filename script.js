@@ -1,12 +1,14 @@
 let canvas = document.querySelector(".canvas");
 let createBtn = document.getElementById("create");
-let clearBtn = document.getElementById("clear");
-let color = document.getElementById("picker");
-let userInput;
+let resetBtn = document.getElementById("reset");
+let colorPicker = document.getElementById("picker");
+let currentColour;
+let userInput = 16;
 let cells;
 
-
 function drawCanvas(cells) {
+    cells = cells || userInput;
+
     let cellWidth = 100 / cells; 
     let cellHeight = 100 / cells; 
 
@@ -22,39 +24,49 @@ function drawCanvas(cells) {
     }
 }
 
-function setColour(event, pickedColour) {
-    event.target.style.background = color.value;
-
-    if(pickedColour) {
-        event.target.style.background = pickedColour;
-    }
-}
-
 function takeUserInput() {
-    event.preventDefault();
-    userInput = document.getElementById("number").value;  
+    userInput = document.getElementById("number").value;
 
-    if (!userInput || userInput < 2 || userInput > 100 || isNaN(userInput) || userInput % 1 != 0)  {
+    if (!userInput || userInput < 2 || userInput > 100 || isNaN(userInput) || userInput % 1 !== 0) {
         alert("Please enter a positive, whole numerical value between 2 and 100.");
-        document.getElementById("number").value = "";
     } else {
-        //Clears the previous canvas and draw a new one according to user input
-        resetCanvas()
+        updateWithUserInput(userInput);
     }
 }
 
-function resetCanvas() {
-    canvas.innerHTML = ""; 
-    drawCanvas(16);
+function updateWithUserInput(userInput){
+        event.preventDefault();
+        canvas.innerHTML = "";
+        drawCanvas(userInput); // Update the canvas with the new user input value
 }
 
 function watchColorPicker(event) {
-    return pickedColour;
+    currentColour = colorPicker.value;
+    setColour(event, currentColour);
+}
+
+function setColour(event, currentColour) {
+    currentColour = colorPicker.value;
+    event.target.style.background = currentColour;
+    
+    if(currentColour) {
+        event.target.style.background = currentColour;
+    }
+}
+
+function resetCanvas(event) {
+    canvas.innerHTML = "";
+    drawCanvas(16); 
+    colorPicker.value = "#3e4c75";
+    currentColour = "#3e4c75";
+    setColour(event, currentColour);
+    document.getElementById("reset").style.background = ""; // Reset the background color of the "Clear" button
+    //to prevent it to take the set currentColour background colour
 }
 
 createBtn.addEventListener("click", takeUserInput);
-color.addEventListener("input", watchColorPicker, false);
+colorPicker.addEventListener("change", watchColorPicker);
 
-clearBtn.addEventListener("click", resetCanvas);
+resetBtn.addEventListener("click", resetCanvas);
 
-drawCanvas(16);
+drawCanvas();
