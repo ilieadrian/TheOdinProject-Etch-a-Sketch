@@ -2,6 +2,7 @@ let canvas = document.querySelector(".canvas");
 let createBtn = document.getElementById("create");
 let resetBtn = document.getElementById("reset");
 let colorPicker = document.getElementById("picker");
+let rainbowModeBtn = document.getElementById("rainbow-mode");
 let currentColour;
 let userInput = 16;
 let cells;
@@ -46,12 +47,23 @@ function watchColorPicker(event) {
 }
 
 function setColour(event, currentColour) {
-    currentColour = colorPicker.value;
-    event.target.style.background = currentColour;
-    
+    currentColour = currentColour;
+    console.log("Setcolor outside of if: ", currentColour)
+
     if(currentColour) {
         event.target.style.background = currentColour;
+        console.log("Setcolor if true: ", currentColour)
+    } else {
+        // currentColour = colorPicker.value;
+        event.target.style.background = currentColour;
+        console.log("Setcolor if false: ", currentColour)
     }
+}
+
+function rainbowMode() {
+    let currentColour = "#f2f3f4";
+    setColour(event, currentColour);
+    console.log("Rainbowmode: ", currentColour)
 }
 
 function resetCanvas(event) {
@@ -67,6 +79,7 @@ function resetCanvas(event) {
 createBtn.addEventListener("click", takeUserInput);
 colorPicker.addEventListener("change", watchColorPicker);
 
+rainbowModeBtn.addEventListener("click", rainbowMode);
 resetBtn.addEventListener("click", resetCanvas);
 
 drawCanvas();
