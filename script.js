@@ -6,7 +6,6 @@ let rainbowModeBtn = document.getElementById("rainbow-mode");
 let opacityBtn = document.getElementById("opacity");
 let currentColour;
 let baseColour = "#3e4c75";
-let opacityValue = 0.1;
 let userPickedColour;
 let rainbowModeOn = false;
 let userInput = 16;
@@ -51,8 +50,9 @@ function updateWithUserInput(userInput){
 function increasOpacitymode(event) {
     canvas.addEventListener("mouseover", function(event) {
         const cell = event.target;
-        if (cell.classList.contains("cell")) {
-            cell.style.backgroundColor = currentColour; // Set the current color
+        if (cell.classList.contains("cell") && increasOpacitymode) {
+            let opacityStartColour = currentColour;
+            cell.style.backgroundColor = opacityStartColour; // Set the current color
             
             // Increase the opacity
             cell.style.opacity = opacityValue.toString();
@@ -62,7 +62,7 @@ function increasOpacitymode(event) {
             
             // Reset the opacity value when it goes beyond 1
             if (opacityValue > 1) {
-                opacityValue = 0.1;
+                opacityValue = +0.1;
             }
         }
     });
