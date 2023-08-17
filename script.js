@@ -8,6 +8,7 @@ let currentColour;
 let baseColour = "#3e4c75";
 let userPickedColour;
 let rainbowModeOn = false;
+let increaseOpacitymodeOn = false;
 let userInput = 16;
 let cells;
 
@@ -47,35 +48,21 @@ function updateWithUserInput(userInput){
         drawCanvas(userInput); // Update the canvas with the new user input value
 }
 
-function increasOpacitymode(event) {
-    canvas.addEventListener("mouseover", function(event) {
-        const cell = event.target;
-        if (cell.classList.contains("cell") && increasOpacitymode) {
-            let opacityStartColour = currentColour;
-            cell.style.backgroundColor = opacityStartColour; // Set the current color
-            
-            // Increase the opacity
-            cell.style.opacity = opacityValue.toString();
-            
-            // Increment the opacity value for the next hover
-            opacityValue += 0.1;
-            
-            // Reset the opacity value when it goes beyond 1
-            if (opacityValue > 1) {
-                opacityValue = +0.1;
-            }
-        }
-    });
-}
+// 
 
 function setColour(event) {
     // Reset the opacity value when a new cell is hovered
+    if (increaseOpacitymodeOn) {
+        increaseOpacitymode()
+    }
+
     opacityValue = 0.1;
     
     const cell = event.target;
     if (rainbowModeOn) {
         const randomColor = getRandomRGBA();
         cell.style.background = randomColor;
+        // increaseOpacitymodeOn = false;
     } else if (userPickedColour) {
         cell.style.background = userPickedColour;
     } else {
@@ -83,18 +70,29 @@ function setColour(event) {
     }
 }
 
-// function setColour(event) {
-//     const cell = event.target;
+function increaseOpacitymode() {
+    console.log("Hello from opacity mode");
+    canvas.addEventListener("mouseover", function(event) {
+                const cell = event.target;
 
-//     if (rainbowModeOn) {
-//         const randomColor = getRandomRGBA();
-//         cell.style.background = randomColor;
-//     } else if (userPickedColour) {
-//         cell.style.background = userPickedColour;
-//     } else {
-//         cell.style.background = baseColour;
-//     }
-// }
+                opacityStartColour = cell.style.backgroundColor;
+
+                if (opacityStartColour !== '') {
+                    currentColour = opacityStartColour;
+                    // rainbowModeOn = false;
+                }
+                console.log(opacityStartColour)
+        //         if (cell.classList.contains("cell") && increasOpacitymode) {
+        //             let opacityStartColour = currentColour;
+        //             cell.style.backgroundColor = opacityStartColour; // Set the current color
+                    
+        //             
+        //             
+        //         }
+    });
+}
+
+// 
 
 function getRandomRGBA() {
     const r = Math.floor(Math.random() * 256);
@@ -106,6 +104,7 @@ function getRandomRGBA() {
 
 function watchColorPicker() {
     rainbowModeOn = false;
+    increaseOpacitymodeOn = false;
     userPickedColour = colorPicker.value;
 }
 
@@ -115,10 +114,11 @@ function resetCanvas() {
     colorPicker.value = baseColour;
     currentColour = baseColour;
     rainbowModeOn = false;
+    increaseOpacitymodeOn = false;
 }
 
 createBtn.addEventListener("click", takeUserInput);
-opacityBtn.addEventListener("click", increasOpacitymode)
+opacityBtn.addEventListener("click", () => increaseOpacitymodeOn = true);
 colorPicker.addEventListener("change", watchColorPicker);
 rainbowModeBtn.addEventListener("click", () => rainbowModeOn = true);
 resetBtn.addEventListener("click", resetCanvas);
